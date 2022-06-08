@@ -66,13 +66,26 @@ describe("Topic 09 Exercise", () => {
   //     .should("have.attr", "aria-checked", "true");
   // });
 
-  it('TC_05', () => {
-    cy.visit("https://register.rediff.com/register/register.php");
-    cy.xpath("//input[@id='Register']").click();
-    cy.on('window:alert',(t)=>{
-      //assertions
-      expect(t).to.contains('Your full name');
-   })
+  // it('TC_05', () => {
+  //   cy.visit("https://register.rediff.com/register/register.php");
+  //   cy.xpath("//input[@id='Register']").click();
+  //   cy.on('window:alert',(t)=>{
+  //     //assertions
+  //     expect(t).to.contains('Your full name');
+  //  })
+  // });
+
+  it('User interaction: Hover to element', () => {
+    cy.visit("https://www.fahasa.com/");
+    cy.handleIframe(
+      "iframe#preview-notification-frame.st_preview_frame_modal",
+      "#NC_IMAGE1"
+    );
+    cy.xpath("//span[@class='icon_menu']").trigger("mouseover");
+    cy.wait(2000);
+    cy.xpath("//span[text()='Đồ Chơi']").trigger("mouseover");
+    cy.wait(2000);
+    cy.xpath("//div[@class='fhs_column_stretch']//a[text()='Đồ Chơi Điều Khiển']").click();
   });
 
 });
