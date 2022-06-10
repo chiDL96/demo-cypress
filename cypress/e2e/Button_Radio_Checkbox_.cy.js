@@ -75,17 +75,26 @@ describe("Topic 09 Exercise", () => {
   //  })
   // });
 
-  it('User interaction: Hover to element', () => {
-    cy.visit("https://www.fahasa.com/");
-    cy.handleIframe(
-      "iframe#preview-notification-frame.st_preview_frame_modal",
-      "#NC_IMAGE1"
-    );
-    cy.xpath("//span[@class='icon_menu']").trigger("mouseover");
-    cy.wait(2000);
-    cy.xpath("//span[text()='Đồ Chơi']").trigger("mouseover");
-    cy.wait(2000);
-    cy.xpath("//div[@class='fhs_column_stretch']//a[text()='Đồ Chơi Điều Khiển']").click();
-  });
+  // it('User interaction: Hover to element', () => {
+  //   cy.visit("https://www.fahasa.com/");
+  //   cy.handleIframe(
+  //     "iframe#preview-notification-frame.st_preview_frame_modal",
+  //     "#NC_IMAGE1"
+  //   );
+  //   cy.xpath("//span[@class='icon_menu']").trigger("mouseover");
+  //   cy.wait(2000);
+  //   cy.xpath("//span[text()='Đồ Chơi']").trigger("mouseover");
+  //   cy.wait(2000);
+  //   cy.xpath("//div[@class='fhs_column_stretch']//a[text()='Đồ Chơi Điều Khiển']").click();
+  // });
 
+
+  it('test', () => {
+    const classSelected = "ui-selected";
+    cy.visit("https://jqueryui.com/selectable/");
+    cy.iframe(".demo-frame").find("ol li").contains("Item 1").invoke("attr","class",classSelected);
+    cy.iframe(".demo-frame").find("ol li").contains("Item 5").invoke("attr","class",classSelected);
+    
+  });
 });
+ 
